@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<input type="text" id="city" placeholder="Enter city">
+<button onclick="getWeather()">Search</button>
+
+<h2 id="temp"></h2>
+
+<script>
+async function getWeather() {
+
+  let city = document.getElementById("city").value;
+
+  let response = await fetch(
+    `https://wttr.in/${city}?format=j1`
+  );
+
+  let data = await response.json();
+
+  document.getElementById("temp").innerText =
+    "Temperature: " + data.current_condition[0].temp_C + "°C";
+}
+</script>
+
+</body>
+</html>
